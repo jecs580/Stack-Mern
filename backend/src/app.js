@@ -4,5 +4,4 @@
 const express = require('express');
 
 const app = express(); // Creamos una aplicacion de express
-
 module.exports=app; // Exportamos el modulo "app"
