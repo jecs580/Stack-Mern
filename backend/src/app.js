@@ -20,8 +20,8 @@ app.use(express.json()); // Especificamos que nuestro servidor pueda entender el
 /*Routes
     Rutas que tendra nuestro proyecto
 */
-app.get('/api/users', (req, res)=>res.send('Ruta de usuarios'))
-app.get('/api/notes', (req, res)=>res.send('Ruta de notas'))
+app.use('/api/users', require('./routes/users'))  // Ruta general de usuario
+app.use('/api/notes', require('./routes/notes'))  // Ruta general de notas
 
 
 module.exports=app; // Exportamos el modulo "app"
