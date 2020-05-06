@@ -9,7 +9,8 @@ const URI=process.env.MONGODB_CONNECT ? process.env.MONGODB_CONNECT:'mongodb://l
 mongoose.connect(URI,{
     useNewUrlParser:true,
     useCreateIndex:true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify:false
 }); // Configuracion para una conexion con una base de datos de mongo
 
 const conection = mongoose.connection  // Objeto de conexion
