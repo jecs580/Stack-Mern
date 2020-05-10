@@ -10,13 +10,20 @@ export default class CreateNote extends Component {
     title: "",
     content: "",
   };
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
+    const newNote = {
+      title: this.state.title,
+      content: this.state.content,
+      author: this.state.userSelected,
+      date: this.state.date,
+    };
+    await axios.post("http://localhost:4000/api/notes", newNote);
+    window.location.href = "/";
   };
   onInputChange = (e) => {
     // this.setState({ userSelected: e.target.value });
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.title, this.state.content);
   };
   onChangeDate = (date) => {
     this.setState({ date: date });
@@ -25,8 +32,8 @@ export default class CreateNote extends Component {
     const resUsers = await axios.get("http://localhost:4000/api/users");
     this.setState({
       users: resUsers.data.map((user) => user.username),
+      userSelected: resUsers.data[0].username,
     });
-    console.log(this.state.users);
   }
   render() {
     return (
